@@ -1,7 +1,7 @@
 """ 
     Title: pytech_insert.py
-    Author: Professor Krasso
-    Date: 10 July 2020
+    Author: Jacob Stevens
+    Date: 10 April 2022
     Description: Test program for inserting new documents 
                  into the students collection 
 """

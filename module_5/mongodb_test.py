@@ -3,7 +3,7 @@ from pymongo import MongoClient
 
 #
 #   Title: mongodb_test.py
-#   Author: Jacob Stevens
+#   Author: Jacob Stevens 
 #   Date: 10 April 2022
 #   Description: Test program for connecting to a
 #                 MongoDB Atlas cluster
