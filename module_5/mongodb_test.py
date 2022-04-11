@@ -19,7 +19,7 @@ client = MongoClient(URI)
 db = client.pytech
 
 # show the connected collections
-print("\n -- Pytech COllection List --")
+print("\n -- Pytech Collection List --")
 print(db.list_collection_names())
 
 # show an exit message
