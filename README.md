@@ -1,4 +1,4 @@
 # Repository for Jacob Stevens 
 # csd-310
-# Belleview University
+# Bellevue University
 # 2022
