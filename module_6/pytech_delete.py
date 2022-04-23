@@ -24,7 +24,7 @@ students = db.students
 student_list = students.find({})
 
 # display message
-print("\n**** DISPLAYING STUDENTS DOCUMENTS FROM find() QUERY ****")
+print("\n****DISPLAYING STUDENTS DOCUMENTS FROM find() QUERY****")
 
 # loop over the collection and output the results
 for item in student_list:
