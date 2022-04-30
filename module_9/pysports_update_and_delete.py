@@ -50,6 +50,7 @@ try:
     # execute the update query
     cursor.execute(update_player)
 
+
     # inner join query 
     cursor.execute("SELECT player_id, first_name, last_name, team_name FROM player INNER JOIN team ON player.team_id = team.team_id")
 
@@ -81,6 +82,7 @@ try:
 
     input("\n\n  Press any key to continue... ")
     
+   
 
 #Error Handling
 except mysql.connector.Error as err:
