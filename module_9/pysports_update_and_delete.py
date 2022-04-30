@@ -1,7 +1,7 @@
-#Title: pysports_join_queries.py
+#Title: pysports_update_and_delete.py
 #Author: Jacob Stevens
 #Date: 30 April 2022
-#Description: Test program for connecting to a MySQL database through Python and creating INNER JOIN for player and team tables
+#Description: Test program for connecting to a MySQL database through Python and updating/deleting records through join queries
 
 #Imports
 import mysql.connector
