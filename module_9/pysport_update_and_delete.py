@@ -17,6 +17,7 @@ config = {
 }
 
 
+
 def show_players(cursor, title):
     """ method to execute an inner join on the player and team table, 
         iterate over the dataset and output the results to the terminal window.
