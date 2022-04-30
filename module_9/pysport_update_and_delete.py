@@ -1,9 +1,8 @@
-
-#Title: pysports_queries.py
+#Title: pysports_join_queries.py
 #Author: Jacob Stevens
-#Date: 23 April 2022
-#Description: Test program for connecting to a MySQL database through Python and SELECT query team/player tables to display records
-    
+#Date: 30 April 2022
+#Description: Test program for connecting to a MySQL database through Python and creating INNER JOIN for player and team tables
+
 #Imports
 import mysql.connector
 from mysql.connector import errorcode
@@ -16,6 +15,8 @@ config = {
     "database": "pysports",
     "raise_on_warnings": True
 }
+
+
 def show_players(cursor, title):
     """ method to execute an inner join on the player and team table, 
         iterate over the dataset and output the results to the terminal window.
@@ -38,32 +39,43 @@ try:
     #connect to the pysports database 
     db = mysql.connector.connect(**config) 
     cursor = db.cursor()
+    
+    
+    # insert player query 
+    add_player = ("INSERT INTO player(first_name, last_name, team_id)"
+                 "VALUES(%s, %s, %s)")
 
-    #output the connection status 
-    print("\n\tUser {} is connected to {} MySQL database on host {}".format(config["user"], config["database"], config["host"]))
-    input("\n\n\tPress any key to continue...")
+    # player data fields 
+    player_data = ("Smeagol", "Shire Folk", 1)
 
+    # insert a new player record
+    cursor.execute(add_player, player_data)
 
-    #SELECT query for team table
-    cursor.execute("SELECT team_id, team_name, mascot FROM team")
-    #store results in teams variable
-    teams = cursor.fetchall()
-    #SELECT query for player table
-    cursor.execute("SELECT player_id, first_name, last_name, team_id FROM player")
-    #store results in players variable
-    players = cursor.fetchall()
+    # commit the insert to the database 
+    db.commit()
 
-   
+    # show all records in the player table 
+    show_players(cursor, "DISPLAYING PLAYERS AFTER INSERT")
 
-    #display results
-    print(" --- Team Records --- ")
-    for team in teams:
-        print("\tTeam ID: {}\n\tTeam Name: {}\n\tMascot: {}\n".format(team[0], team[1], team[2]))
-    print(" --- Player Records --- ")
-    for player in players:
-        print("\tPlayer ID: {}\n\tFirst Name: {}\n\tLast Name: {}\n\tTeam ID: {}\n".format(player[0], player[1], player[2], player[3]))
+    # update the newly inserted record 
+    update_player = ("UPDATE player SET team_id = 2, first_name = 'Gollum', last_name = 'Ring Stealer' WHERE first_name = 'Smeagol'")
 
-    input("\n\n\tPress any key to continue... ")
+    # execute the update query
+    cursor.execute(update_player)
+
+    # show all records in the player table 
+    show_players(cursor, "DISPLAYING PLAYERS AFTER UPDATE")
+
+    # delete query 
+    delete_player = ("DELETE FROM player WHERE first_name = 'Gollum'")
+
+    cursor.execute(delete_player)
+
+    # show all records in the player table 
+    show_players(cursor, "DISPLAYING PLAYERS AFTER DELETE")
+
+    input("\n\n  Press any key to continue... ")
+    
 
 #Error Handling
 except mysql.connector.Error as err:
